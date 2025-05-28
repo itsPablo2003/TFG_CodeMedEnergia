@@ -1,18 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control de Luz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f5;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .boton {
+      display: inline-block;
+      margin: 20px;
+      padding: 20px 40px;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s;
+    }
+
+    .encender {
+      background-color: #28a745;
+    }
+
+    .encender:hover {
+      background-color: #218838;
+    }
+
+    .apagar {
+      background-color: #dc3545;
+    }
+
+    .apagar:hover {
+      background-color: #c82333;
+    }
+
+    @media (max-width: 600px) {
+      .boton {
+        width: 80%;
+        font-size: 1.2em;
+      }
+    }
+  </style>
 </head>
 <body>
   <h2>Controlar Luz Remotamente</h2>
-  <button onclick="enviar(1)">Encender</button>
-  <button onclick="enviar(0)">Apagar</button>
+  <button class="boton encender" onclick="enviar(1)">💡 Encender</button>
+  <button class="boton apagar" onclick="enviar(0)">🔌 Apagar</button>
 
   <script>
     function enviar(valor) {
       const url = `https://api.thingspeak.com/update?api_key=FXIREIGQPMWWB6HA&field2=${valor}`;
       fetch(url)
-        .then(() => alert("Comando enviado"))
+        .then(() => alert(`Comando "${valor == 1 ? 'Encender' : 'Apagar'}" enviado`))
         .catch(err => alert("Error: " + err));
     }
   </script>
