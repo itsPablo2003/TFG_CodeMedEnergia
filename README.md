@@ -72,7 +72,7 @@ TFG_CodeMedEnergia/
 
 Desde un navegador, accede a la Web y usa los siguientes endpoints:
 
-| Acción           | URL local                                                                     |
+| Acción           | URL                                                                           |
 |------------------|-------------------------------------------------------------------------------|
 | Encender relé    | `https://api.thingspeak.com/update?api_key=[THINGSPEAK_API_KEY]&field2=1`     |
 | Apagar relé      | `https://api.thingspeak.com/update?api_key=[THINGSPEAK_API_KEY]&field2=0`     |
