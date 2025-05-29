@@ -10,13 +10,13 @@ const int numSamples = 100;
 const bool RELAY_ACTIVE_HIGH = true;
 
 // WiFi
-const char* ssid = "WIFI_MI_JDU";
-const char* password = "Portatil%40%";
+const char* ssid = "TU_SSID";
+const char* password = "TU_PASSWORD";
 
 // ThingSpeak
-const String writeAPIKey = "FXIREIGQPMWWB6HA";
-const String readAPIKey = "YKGWOG0558VZWTBG";
-const String channelID = "2974072";
+const String writeAPIKey = "TU_WRITE_API_KEY";
+const String readAPIKey = "TU_READ_API_KEY";
+const String channelID = "TU_CHANNEL_ID";
 
 // EEPROM
 const int relayStateAddress = 0;
@@ -69,7 +69,6 @@ void loop() {
   powerIndex = (powerIndex + 1) % windowSize;
   float smoothedPower = powerSum / windowSize;
 
-  // Solo enviamos si el valor cambió significativamente o ha pasado suficiente tiempo
   if (millis() - lastSend >= sendInterval && abs(smoothedPower - lastSentPower) > sendThreshold) {
     sendToThingSpeak(smoothedPower);
     lastSentPower = smoothedPower;
